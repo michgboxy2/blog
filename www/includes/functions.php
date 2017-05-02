@@ -49,3 +49,32 @@
 			return $result;
 
 	}
+
+	function doAdminLogin($dbconn,$input){
+		$result = [];
+
+		$stmt = $dbconn->prepare("SELECT admin_id,hash FROM admin WHERE email=:e");
+		$stmt->bindParam(":e",$input['email']);
+		$stmt->execute();
+		$row = $stmt->fetch(PDO::FETCH_BOTH);
+		#print_r($row);exit();
+		
+		if($stmt->rowCount() != 1 || !password_verify($input['password'], $row['hash'])){
+			
+		redirect('adminLogin.php');exit();	
+
+				} else {
+
+			$result[] = true;
+			$result[] = $row['admin_id'];
+		}
+
+		return $result;
+
+	}
+
+	function redirect($loc){
+
+		header("Location:$loc");
+
+	}

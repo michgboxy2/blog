@@ -21,6 +21,12 @@ $page_title = 'Login';
 		if(empty($error)){
 			$clean = array_map('trim', $_POST);
 			//do error login
+			$chk = doAdminLogin($conn,$clean);
+			if($chk[0]){
+				$_SESSION['id'] = $chk[1]['admid_id'];
+				header("Location:homepage.php");
+
+			}
 		}
 
 
@@ -38,10 +44,13 @@ $page_title = 'Login';
 		<hr>
 		<form id="register"  action ="adminLogin.php" method ="POST">
 			<div>
+				<?php ErrorDisplay($error, 'email'); ?>
 				<label>email:</label>
 				<input type="text" name="email" placeholder="email">
 			</div>
 			<div>
+				<?php ErrorDisplay($error, 'password'); ?>
+
 				<label>password:</label>
 				<input type="password" name="password" placeholder="password">
 			</div>

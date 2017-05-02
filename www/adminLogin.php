@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $page_title = 'Login';
 
@@ -20,8 +21,9 @@ $page_title = 'Login';
 
 		if(empty($error)){
 			$clean = array_map('trim', $_POST);
-			//do error login
+			
 			$chk = doAdminLogin($conn,$clean);
+			
 			if($chk[0]){
 				$_SESSION['id'] = $chk[1]['admid_id'];
 				header("Location:homepage.php");
@@ -31,9 +33,6 @@ $page_title = 'Login';
 
 
 	}
-
-
-
 
 
 ?>
@@ -58,5 +57,5 @@ $page_title = 'Login';
 			<input type="submit" name="login" value="login">
 		</form>
 
-		<h4 class="jumpto">Don't have an account? <a href="register.php">register</a></h4>
+		<h4 class="jumpto">Don't have an account? <a href="add_admin.php">register</a></h4>
 	</div>

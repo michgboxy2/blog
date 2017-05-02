@@ -31,6 +31,7 @@ $page_title = 'edit View Posts';
 			$clean = array_map('trim', $_POST);
 			$clean['post'] = htmlspecialchars_decode($clean['post']);
 			updatePost($conn,$clean,$pid);
+			redirect('view_post.php');
 		}
 
 

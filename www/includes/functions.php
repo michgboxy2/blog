@@ -78,3 +78,16 @@
 		header("Location:$loc");
 
 	}
+
+	function AddPost($dbconn, $input, $user_id){
+
+		$stmt = $dbconn->prepare("INSERT INTO post(post_id,title,user_id,posts,date) VALUES(NULL,:ti,:uid,:p,NOW())");
+		$data = [
+
+		":ti" => $input['title'],
+		":uid" => $user_id,
+		":p" => $input['post']
+				];
+		$stmt->execute($data);
+
+	}

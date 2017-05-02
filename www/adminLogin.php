@@ -25,7 +25,7 @@ $page_title = 'Login';
 			$chk = doAdminLogin($conn,$clean);
 			
 			if($chk[0]){
-				$_SESSION['id'] = $chk[1]['admid_id'];
+				$_SESSION['id'] = $chk[1]['admin_id'];
 				header("Location:homepage.php");
 
 			}

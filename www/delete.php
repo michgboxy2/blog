@@ -12,8 +12,7 @@ $page_title = 'Delete Posts';
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
 	}
-
-
+	
 	Delete($conn,$pid);
 	redirect("view_post.php");
 

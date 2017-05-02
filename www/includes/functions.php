@@ -137,7 +137,7 @@
 
 	function Delete($dbconn,$post_id){
 
-		$stmt = $dbconn->prepare("DELETE * FROM post WHERE post_id=:post_id");
+		$stmt = $dbconn->prepare("DELETE FROM post WHERE post_id=:post_id");
 		$stmt->bindParam(":post_id", $post_id);
 		$stmt->execute();	
 

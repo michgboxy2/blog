@@ -6,6 +6,7 @@
 	include 'includes/db.php';
 	include 'includes/functions.php';
 	include 'includes/header.php';
+	include 'includes/dynamic.php';
 
 	$error = [];
 

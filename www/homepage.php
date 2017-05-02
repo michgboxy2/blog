@@ -15,7 +15,7 @@
         <nav class="nav blog-nav">
           <a class="nav-link active" href="#">Home</a>
           <a class="nav-link" href="#">New features</a>
-          <a class="nav-link" href="#">Press</a>
+          <a class="nav-link" href="view_post.php">View Posts</a>
           <a class="nav-link" href="post.php">New Posts</a>
           <a class="nav-link" href="#">About</a>
         </nav>

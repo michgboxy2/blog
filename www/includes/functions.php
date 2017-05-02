@@ -91,3 +91,22 @@
 		$stmt->execute($data);
 
 	}
+
+	function ViewPost($dbconn){
+		$result = "";
+
+		$stmt = $dbconn->prepare("SELECT * FROM post");
+		$stmt->execute();
+		while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+
+			$result .= '<tr>
+						<td>'.$row['posts'].'</td>;
+						<td>'.$row['user_id'].'</td>;
+						<td>'.$row['date'].'</td>;
+						<td><a href="edit_view.php">edit</a></td>;
+						<td><a href="delete.php">delete</a></td>;
+					</tr>';
+		}
+
+		return $result;
+}

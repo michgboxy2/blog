@@ -14,6 +14,7 @@ $page_title = 'View Posts';
 				<thead>
 					<tr>
 						<th>title</th>
+						<th>Post</th>
 						<th>author</th>
 						<th>date created</th>
 						<th>edit</th>

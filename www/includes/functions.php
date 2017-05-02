@@ -100,13 +100,37 @@
 		while($row = $stmt->fetch(PDO::FETCH_BOTH)){
 
 			$result .= '<tr>
+						<td>'.$row['title'].'</td>;
 						<td>'.$row['posts'].'</td>;
 						<td>'.$row['user_id'].'</td>;
 						<td>'.$row['date'].'</td>;
-						<td><a href="edit_view.php">edit</a></td>;
-						<td><a href="delete.php">delete</a></td>;
-					</tr>';
+						<td><a href="edit_view.php?pid='.$row['post_id'].'">edit</a></td>;
+						<td><a href="delete.php?pid='.$row['post_id'].'">delete</a></td>;
+						</tr>';
 		}
 
 		return $result;
 }
+
+	function getPostById($dbconn,$post_id){
+		$result = "";
+
+		$stmt = $dbconn->prepare("SELECT * FROM post WHERE post_id=:p");
+		$stmt->bindParam(":p",$post_id);
+		$stmt->execute();
+		$row = $stmt->fetch(PDO::FETCH_BOTH);
+		return $row;
+	}
+
+	function updatePost($dbconn,$input,$post_id){
+		$result = "";
+
+		$stmt = $dbconn->prepare("UPDATE post SET title=:ti,posts=:post WHERE post_id=:post_id");
+		$data = [
+		":post_id" => $post_id,
+		":ti" => $input['title'],
+		":post" => $input['post']
+
+				];
+		$stmt->execute($data);
+	}

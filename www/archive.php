@@ -15,7 +15,8 @@ $page_title = 'Archive';
 	}
 
 
-InsertArchive($conn,$pid){
+	InsertArchive($conn,$pid);
+	redirect("view_post.php");
 
 
 

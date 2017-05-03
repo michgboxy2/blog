@@ -166,7 +166,7 @@
 	function DisplayPosts($dbconn){
 		$result = "";
 
-		$stmt = $dbconn->prepare("SELECT * FROM post");
+		$stmt = $dbconn->prepare("SELECT title,user_id,posts,DATE_FORMAT(date,'%M %e, %Y') AS d FROM post");
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_BOTH)){
 			   $item = GetAdminDetails($dbconn,$row['user_id']);
@@ -174,7 +174,7 @@
 
 			$result .= '<div class="blog-post">
             			<h2 class="blog-post-title">'.$row['title'].'</h2>
-            			<p class="blog-post-meta">'.$row['date'].' by <a href="#">'.$item['firstname'].'</a></p>
+            			<p class="blog-post-meta">'.$row['d'].' by <a href="#">'.$item['firstname'].'</a></p>
             			<p clas="blog-post">'.$row['posts'].'</p>';
 
 			
@@ -193,7 +193,7 @@
 
 	function InsertArchive($dbconn,$pid){
 
-		$stmt = $dbconn->prepare("INSERT INTO archive(archive_id,post_id) VALUES(NULL,:pid)");
+		$stmt = $dbconn->prepare("INSERT INTO archive(archive_id,post_id,date) VALUES(NULL,:pid,NOW())");
 		$stmt->bindParam(":pid",$pid);
 		$stmt->execute();
 	}

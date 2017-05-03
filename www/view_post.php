@@ -6,7 +6,7 @@ $page_title = 'View Posts';
 	include 'includes/functions.php';
 	include 'includes/header.php';
 	include 'includes/dynamic.php';
-	CheckLogin();
+	#CheckLogin();
 ?>
 
 	<div class="wrapper">
@@ -20,6 +20,7 @@ $page_title = 'View Posts';
 						<th>date created</th>
 						<th>edit</th>
 						<th>delete</th>
+						<th>Archive</th>
 					</tr>
 				</thead>
 				<tbody>

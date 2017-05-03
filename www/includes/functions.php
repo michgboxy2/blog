@@ -80,7 +80,7 @@
 	}
 
 	function AddPost($dbconn, $input, $user_id){
-
+		
 		$stmt = $dbconn->prepare("INSERT INTO post(post_id,title,user_id,posts,date) VALUES(NULL,:ti,:uid,:p,NOW())");
 		$data = [
 
@@ -112,6 +112,7 @@
 						 <td>'.$row['date'].'</td>;
 						 <td><a href="edit_view.php?pid='.$row['post_id'].'">edit</a></td>;
 						 <td><a href="delete.php?pid='.$row['post_id'].'">delete</a></td>;
+						 <td><a href="archive.php?pid='.$row['post_id'].'">archive</a></td>;
 						 </tr>';
 		}
 
@@ -184,12 +185,15 @@
 	}
 
 	function CheckLogin(){
-		$result = false;
-
+		
 		if(!isset($_SESSION['id'])){
 			redirect("adminLogin.php");
-		}else{
-			$result = true; 
 		}
-		return $result;
+	}
+
+	function InsertArchive($dbconn,$pid){
+
+		$stmt = $dbconn->prepare("INSERT INTO archive(archive_id,post_id) VALUES(NULL,:pid)");
+		$stmt->bindParam(":pid",$pid);
+		$stmt->execute();
 	}

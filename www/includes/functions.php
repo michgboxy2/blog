@@ -95,22 +95,38 @@
 	function ViewPost($dbconn){
 		$result = "";
 
-		$stmt = $dbconn->prepare("SELECT * FROM post");
+		$stmt = $dbconn->prepare("SELECT * FROM post");		
 		$stmt->execute();
+		
 		while($row = $stmt->fetch(PDO::FETCH_BOTH)){
 
-			$result .= '<tr>
-						<td>'.$row['title'].'</td>;
-						<td>'.$row['posts'].'</td>;
-						<td>'.$row['user_id'].'</td>;
-						<td>'.$row['date'].'</td>;
-						<td><a href="edit_view.php?pid='.$row['post_id'].'">edit</a></td>;
-						<td><a href="delete.php?pid='.$row['post_id'].'">delete</a></td>;
-						</tr>';
+			  $item = GetAdminDetails($dbconn,$row['user_id']);
+
+
+			  $result .= '<tr>
+						 <td>'.$row['title'].'</td>;
+						 <td>'.$row['posts'].'</td>;
+						 <td>'.$item['firstname'].'</td>;
+						 <td>'.$row['date'].'</td>;
+						 <td><a href="edit_view.php?pid='.$row['post_id'].'">edit</a></td>;
+						 <td><a href="delete.php?pid='.$row['post_id'].'">delete</a></td>;
+						 </tr>';
 		}
 
 		return $result;
 }
+	function GetAdminDetails($dbconn,$admin_id){
+
+		$stmt = $dbconn->prepare("SELECT firstname FROM admin WHERE admin_id=:id");
+				$stmt->bindParam(":id",$admin_id);
+				$stmt->execute();
+		$rows = $stmt->fetch(PDO::FETCH_BOTH);
+
+		return $rows;
+
+
+
+	}
 
 	function getPostById($dbconn,$post_id){
 		$result = "";

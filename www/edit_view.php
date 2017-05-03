@@ -5,6 +5,7 @@ $page_title = 'edit View Posts';
 
 	include 'includes/db.php';
 	include 'includes/functions.php';
+	include 'includes/header.php';
 
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];
@@ -30,6 +31,7 @@ $page_title = 'edit View Posts';
 		if(empty($error)){
 			$clean = array_map('trim', $_POST);
 			$clean['post'] = htmlspecialchars_decode($clean['post']);
+			
 			updatePost($conn,$clean,$pid);
 			redirect('view_post.php');
 		}

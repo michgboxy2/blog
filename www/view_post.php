@@ -6,6 +6,7 @@ $page_title = 'View Posts';
 	include 'includes/functions.php';
 	include 'includes/header.php';
 	include 'includes/dynamic.php';
+	CheckLogin();
 ?>
 
 	<div class="wrapper">

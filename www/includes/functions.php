@@ -98,6 +98,8 @@
 		$stmt = $dbconn->prepare("SELECT * FROM post");		
 		$stmt->execute();
 		
+	
+		
 		while($row = $stmt->fetch(PDO::FETCH_BOTH)){
 
 			  $item = GetAdminDetails($dbconn,$row['user_id']);
@@ -158,5 +160,36 @@
 		$stmt->execute();	
 
 
+	}
 
+	function DisplayPosts($dbconn){
+		$result = "";
+
+		$stmt = $dbconn->prepare("SELECT * FROM post");
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_BOTH)){
+			   $item = GetAdminDetails($dbconn,$row['user_id']);
+
+
+			$result .= '<div class="blog-post">
+            			<h2 class="blog-post-title">'.$row['title'].'</h2>
+            			<p class="blog-post-meta">'.$row['date'].' by <a href="#">'.$item['firstname'].'</a></p>
+            			<p clas="blog-post">'.$row['posts'].'</p>';
+
+			
+		}
+
+		return $result;
+		
+	}
+
+	function CheckLogin(){
+		$result = false;
+
+		if(!isset($_SESSION['id'])){
+			redirect("adminLogin.php");
+		}else{
+			$result = true; 
+		}
+		return $result;
 	}

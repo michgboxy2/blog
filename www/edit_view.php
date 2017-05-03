@@ -6,6 +6,7 @@ $page_title = 'edit View Posts';
 	include 'includes/db.php';
 	include 'includes/functions.php';
 	include 'includes/header.php';
+	#CheckLogin();
 
 	if(isset($_GET['pid'])){
 		$pid = $_GET['pid'];

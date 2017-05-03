@@ -4,6 +4,8 @@ $page_title = "register";
 	include 'includes/db.php';
 	include 'includes/functions.php';
 	include 'includes/header.php';
+
+	#CheckLogin();
 	
 
 ?>

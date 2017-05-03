@@ -26,7 +26,7 @@ $page_title = 'Login';
 			
 			if($chk[0]){
 				$_SESSION['id'] = $chk[1]['admin_id'];
-				header("Location:homepage.php");
+				header("Location:post.php");
 
 			}
 		}

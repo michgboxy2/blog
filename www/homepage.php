@@ -15,8 +15,8 @@
         <nav class="nav blog-nav">
           <a class="nav-link active" href="#">Home</a>
           <a class="nav-link" href="#">New features</a>
-          <a class="nav-link" href="view_post.php">View Posts</a>
-          <a class="nav-link" href="post.php">New Posts</a>
+          <a class="nav-link" href="#">View Posts</a>
+          <a class="nav-link" href="#">New Posts</a>
           <a class="nav-link" href="#">About</a>
         </nav>
       </div>
@@ -28,4 +28,17 @@
         <p class="lead blog-description">This is a blog where the tales under the moonlight are being told by the elders.</p>
       </div>
     </div>
+
+
+    	<div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+       <?php $display = DisplayPosts($conn); echo $display; ?>
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">Sample blog post</h2>
+            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 

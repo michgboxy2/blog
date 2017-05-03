@@ -7,6 +7,7 @@
 	include 'includes/functions.php';
 	include 'includes/header.php';
 	include 'includes/dynamic.php';
+	CheckLogin();
 
 	$error = [];
 

@@ -197,3 +197,25 @@
 		$stmt->bindParam(":pid",$pid);
 		$stmt->execute();
 	}
+
+	function DisplayArchive($dbconn){
+		$result = "";
+
+		$stmt = $dbconn->prepare("SELECT DISTINCT DATE_FORMAT(date,'%M,%Y') AS d,post_id FROM archive");
+				
+				$stmt->execute();
+		        
+		        while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+
+				$post = getPostById($dbconn,$row['post_id']);
+
+
+				$result .= '<li><a href="homepage.php?post='.$post['post_id'].'">'.$row['d'].'</a></li>';
+            
+              
+                     
+
+
+		}
+		return $result;
+	}

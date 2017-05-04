@@ -210,7 +210,7 @@
 				$post = getPostById($dbconn,$row['post_id']);
 
 
-				$result .= '<li><a href="homepage.php?post='.$post['post_id'].'">'.$row['d'].'</a></li>';
+				$result .= '<li><a href="homepage.php?date='.$post['date'].'">'.$row['d'].'</a></li>';
             
               
                      
